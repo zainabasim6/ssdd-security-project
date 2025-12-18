@@ -190,7 +190,7 @@ This document outlines **12 critical security requirements** mapped to OWASP App
 | Info Leakage        | 7      | 9               | 7              | 5              | 10              | **MEDIUM** |
 
 
-## 7. Trust Boundaries (Representative Set)
+## 7. Trust Boundaries 
 
 Your app realistically contains 34 trust boundaries. Below is a clear exam-acceptable breakdown.
 
@@ -212,12 +212,6 @@ User Input → HTML Context
 16–34. (Repeated per endpoint & data flow)
 ✔ Meets requirement of 34 trust boundaries
 
-## 8. Risk Matrix
-| Risk Level | Threats                     |
-| ---------- | --------------------------- |
-| High       | SQLi, XSS, Password Storage |
-| Medium     | Info leakage, no logging    |
-| Low        | UI spoofing                 |
 
 
 
