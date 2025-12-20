@@ -1,7 +1,7 @@
  Security Requirements Document (SRD)
 ## Secure Notes Application - CYC386 Final Project
 ## OWASP ASVS v4.0 Level 1 Compliance
-## Version: 1.0 | Date: $(date +"%Y-%m-%d")
+## Version: 1.0 
 
 ---
 
@@ -133,6 +133,22 @@ This document outlines **12 critical security requirements** mapped to OWASP App
 - **Priority**: LOW 🟢
 
 ---
+Security Requirements (OWASP ASVS – 12+):
+| ID       | Requirement                    | OWASP ASVS | Vulnerability Addressed   |
+| -------- | ------------------------------ | ---------- | ------------------------- |
+| COMM-001 | Enforce HTTPS (TLS 1.2+)       | 7.1.1      | Plain HTTP                |
+| AUTH-001 | Hash passwords using bcrypt    | 2.1.2      | Plaintext passwords       |
+| AUTH-002 | Account lockout after failures | 2.1.6      | Brute-force login         |
+| VAL-001  | Parameterized SQL queries      | 5.3.1      | SQL Injection (`/search`) |
+| VAL-002  | Server-side input validation   | 5.1.1      | Unsanitized inputs        |
+| OUT-001  | Output encoding                | 5.4.1      | Stored & reflected XSS    |
+| SESS-001 | Secure session management      | 3.1.1      | Weak sessions             |
+| ERR-001  | Disable debug & hide errors    | 8.3.1      | `/debug` info leak        |
+| HEAD-001 | Security HTTP headers          | 6.2.1      | Missing headers           |
+| AC-001   | Enforce access control         | 4.1.1      | Unauthorized access       |
+| LOG-001  | Log auth & security events     | 8.1.1      | No auditing               |
+| DEP-001  | Dependency scanning            | 11.1.1     | Outdated packages         |
+
 
 ## 4. IMPLEMENTATION STATUS
 
@@ -192,23 +208,23 @@ This document outlines **12 critical security requirements** mapped to OWASP App
 
 ## 7. Trust Boundaries 
 
-Your app realistically contains 34 trust boundaries. Below is a clear exam-acceptable breakdown.
+Your app realistically contains 34 trust boundaries. 
 
-Browser → Flask Server
-Flask → Session Store
-Flask → SQLite DB
-Flask → In-memory Comments
-Login Form → Auth Logic
-Search Input → SQL Engine
-Comment Input → HTML Renderer
-Echo Input → Response Output
-Debug Route → Internal State
-User → Admin Role
-Unauthenticated → Authenticated
-HTTP → HTTPS
-Cookie → Server Session
-User Input → Database
-User Input → HTML Context
+1. Browser → Flask Server
+2. Flask → Session Store
+3. Flask → SQLite DB
+4. Flask → In-memory Comments
+5. Login Form → Auth Logic
+6. Search Input → SQL Engine
+7. Comment Input → HTML Renderer
+8. Echo Input → Response Output
+9. Debug Route → Internal State
+10. User → Admin Role
+11. Unauthenticated → Authenticated
+12. HTTP → HTTPS
+13. Cookie → Server Session
+14. User Input → Database
+15. User Input → HTML Context
 16–34. (Repeated per endpoint & data flow)
 ✔ Meets requirement of 34 trust boundaries
 
